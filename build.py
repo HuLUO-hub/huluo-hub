@@ -6,6 +6,10 @@ ROOT = Path(__file__).resolve().parent
 D = json.loads((ROOT / 'content.json').read_text(encoding='utf-8'))
 OUT = ROOT / 'site'
 OUT.mkdir(exist_ok=True)
+P = D['profile']
+T = D['section_titles']
+LIMIT = D.get('display', {}).get('initial_items', 10)
+assert isinstance(LIMIT, int) and not isinstance(LIMIT, bool) and LIMIT > 0, 'initial_items must be a positive integer.'
 def link(url,label,cls=''):
     return f'<a class="{cls}" href="{e(url,quote=True)}">{label}</a>'
 def section_head(number,label,title):
@@ -37,12 +41,12 @@ def publication(p):
     summary=f'<p class="paper-summary">{e(p["summary"])}</p>' if p.get('summary') else ''
     expertise=f'<p class="expertise">{e(p["expertise"])}</p>' if p.get('expertise') else ''
     cls='featured' if p.get('image') else 'compact'
-    role='First author' if p.get('selected') or p.get('key_manuscript') or p['id'] in (4,5) else ''
+    role='First author' if p.get('first_author', False) else ''
     if p.get('image'):
         path=OUT/p['image']
         # Inline SVG avoids operating-system MIME differences during local preview.
         visual=path.read_text(encoding='utf-8').replace('<svg ',f'<svg role="img" aria-label="{e(p["image_alt"],quote=True)}" ',1) if path.suffix=='.svg' else f'<img src="{e(p["image"])}" alt="{e(p["image_alt"])}" loading="lazy">'
-        side=f'<figure class="paper-figure">{link(url,visual)}<figcaption>Research schematic</figcaption></figure>'
+        side=f'<figure class="paper-figure">{link(url,visual)}<figcaption>{e(p.get("image_caption", "Research schematic"))}</figcaption></figure>'
     else:
         side=f'<div class="publication-meta"><span>{p["year"] if p["status"]=="Published" else "In review"}</span><span class="badge">{e(p["status"])}</span></div>'
     author_line='' if p.get('key_manuscript') else f'<p class="paper-authors">{authors.rstrip(".")}.</p>'
@@ -50,20 +54,20 @@ def publication(p):
     return f'<li class="publication {cls}" data-id="{p["id"]}" data-status="{e(p["status"])}">{side}<div class="paper-content"><p class="paper-venue">{e(p["display_venue"])} {role_line}</p><h3 class="paper-title">{title}</h3>{author_line}{summary}{expertise}<div class="paper-actions">{actions}</div></div></li>'
 
 def collection(items, renderer, kind, label):
-    first=f'<ol class="{kind}-list">'+''.join(renderer(x) for x in items[:10])+'</ol>'
-    if len(items)<=10: return first
-    remaining=len(items)-10
-    return first+f'<details class="more-items" id="more-{kind}"><summary><span class="when-closed">More {label} <span aria-hidden="true">↗</span></span><span class="when-open">Show fewer <span aria-hidden="true">−</span></span><span class="more-count">{remaining} additional entries</span></summary><ol class="{kind}-list" start="11">'+''.join(renderer(x) for x in items[10:])+'</ol></details>'
+    first=f'<ol class="{kind}-list">'+''.join(renderer(x) for x in items[:LIMIT])+'</ol>'
+    if len(items)<=LIMIT: return first
+    remaining=len(items)-LIMIT
+    return first+f'<details class="more-items" id="more-{kind}"><summary><span class="when-closed">More {label} <span aria-hidden="true">↗</span></span><span class="when-open">Show fewer <span aria-hidden="true">−</span></span><span class="more-count">{remaining} additional entries</span></summary><ol class="{kind}-list" start="{LIMIT+1}">'+''.join(renderer(x) for x in items[LIMIT:])+'</ol></details>'
 
 bio=''.join(f'<p class="hero-bio">{e(p)}</p>' for p in D['intro_paragraphs'])
 wechat=f'<details class="wechat"><summary>WeChat <span aria-hidden="true">+</span></summary><div class="wechat-card"><span>WeChat ID</span><strong>{e(D["wechat"])}</strong></div></details>'
-hero=f'''<section class="hero"><div class="hero-copy"><p class="eyebrow"><span class="dot"></span> BIOMEDICAL ENGINEERING · TACTILE ROBOTICS</p><h1>{e(D['name'])}</h1><p class="affiliation">Ph.D. Researcher · Fudan University <span lang="zh-CN">复旦大学</span></p>{bio}<div class="contact-links">{link('mailto:'+D['email'],e(D['email'])+' ↗')}{link(D['scholar'],'Google Scholar ↗')}{link(D['github'],'GitHub ↗')}{wechat}</div></div><figure class="portrait"><div class="portrait-frame"><img src="assets/portrait.jpg" alt="Portrait of Hu Luo" width="300" height="375"></div></figure></section>'''
-experience=f'''<section class="background-section" id="experience" aria-label="Education and experience"><div class="background-card"><div class="background-columns"><div class="background-column"><h2>Education <span lang="zh-CN">教育经历</span></h2>{''.join(institution_compact(x) for x in D['education'])}</div><div class="background-column"><h2>Experience <span lang="zh-CN">工作与社会组织经历</span></h2>{''.join(institution_compact(x) for x in D['experience'])}</div></div><details class="background-more"><summary><span class="background-show">More about education & experience</span><span class="background-hide">Hide details</span><span class="background-plus" aria-hidden="true">+</span></summary><div class="background-columns"><div>{''.join(institution_details(x) for x in D['education'])}</div><div>{''.join(institution_details(x) for x in D['experience'])}</div></div></details></div></section>'''
+hero=f'''<section class="hero"><div class="hero-copy"><p class="eyebrow"><span class="dot"></span> {e(P["research_tagline"])}</p><h1>{e(D['name'])}</h1><p class="affiliation">{e(P["role"])} · {e(P["affiliation"])} <span lang="zh-CN">{e(P["affiliation_zh"])}</span></p>{bio}<div class="contact-links">{link('mailto:'+D['email'],e(D['email'])+' ↗')}{link(D['scholar'],'Google Scholar ↗')}{link(D['github'],'GitHub ↗')}{wechat}</div></div><figure class="portrait"><div class="portrait-frame"><img src="{e(P["portrait"],quote=True)}" alt="{e(P["portrait_alt"],quote=True)}" width="300" height="375"></div></figure></section>'''
+experience=f'''<section class="background-section" id="experience" aria-label="Education and experience"><div class="background-card"><div class="background-columns"><div class="background-column"><h2>{e(T["education"])} <span lang="zh-CN">{e(T["education_zh"])}</span></h2>{''.join(institution_compact(x) for x in D['education'])}</div><div class="background-column"><h2>{e(T["experience"])} <span lang="zh-CN">{e(T["experience_zh"])}</span></h2>{''.join(institution_compact(x) for x in D['experience'])}</div></div><details class="background-more"><summary><span class="background-show">{e(T["background_more"])}</span><span class="background-hide">{e(T["background_less"])}</span><span class="background-plus" aria-hidden="true">+</span></summary><div class="background-columns"><div>{''.join(institution_details(x) for x in D['education'])}</div><div>{''.join(institution_details(x) for x in D['experience'])}</div></div></details></div></section>'''
 by_id={p['id']:p for p in D['publications']}
 assert len(by_id)==len(D['publications']), 'Publication IDs must be unique.'
 assert len(D['publication_order'])==len(by_id) and set(D['publication_order'])==set(by_id), 'publication_order must contain every publication ID exactly once.'
 ordered=[by_id[i] for i in D['publication_order']]
-publications=f'''<section class="cv-section" id="publications">{section_head('02','ACADEMIC OUTPUT','Publications & manuscripts')}<p class="section-intro">Selected first-author work, followed by ongoing research and collaborations. <span class="collection-total">{len(ordered)} entries</span></p>{collection(ordered,publication,'publication','publications & manuscripts')}</section>'''
+publications=f'''<section class="cv-section" id="publications">{section_head('02',e(T['publications_label']),e(T['publications']))}<p class="section-intro">{e(T["publications_intro"])} <span class="collection-total">{len(ordered)} entries</span></p>{collection(ordered,publication,'publication','publications & manuscripts')}</section>'''
 
 def patent(p):
     number=link('https://patents.google.com/patent/'+p['number']+'/en',e(p['number'])+' ↗','text-link') if p['number'].startswith('CN') else e('Application '+p['number'])
@@ -72,15 +76,15 @@ def patent(p):
     summary=f'<p class="patent-summary">{e(p["summary"])}</p>' if p.get('summary') else ''
     inventors=e(p['inventors']).replace('Luo Hu','<strong class="author">Luo Hu</strong>')
     return f'<li class="patent" data-number="{p["number"]}"><div><span class="badge">{e(p["status"])}</span>{role}</div><div><h3>{e(p["title"])}</h3><p>{inventors}</p>{summary}{number}</div></li>'
-patents=f'<section class="cv-section" id="patents">{section_head("03","INVENTIONS","Patents & applications")}<p class="section-intro">From optical sensing hardware to force estimation and practical deployment. <span class="collection-total">{len(D["patents"])} entries</span></p>{collection(D["patents"],patent,"patent","patents & applications")}</section>'
-awards=f'<section class="cv-section" id="awards">{section_head("04","RECOGNITION","Honors & awards")}{collection(D["awards"],lambda x:f"<li>{e(x)}</li>","award","awards")}</section>'
-description='Hu Luo — Biomedical engineering researcher at Fudan University. Education, professional experience, research, publications, patents and awards.'
-html=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1200"><title>Hu Luo | Academic CV</title><meta name="description" content="{e(description)}"><meta name="theme-color" content="#193e38"><meta property="og:title" content="Hu Luo | Academic CV"><meta property="og:description" content="{e(description)}"><meta property="og:type" content="profile"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css"></head><body><a class="skip" href="#main">Skip to content</a><div class="page-top"><span>HU LUO</span><span>ACADEMIC PROFILE</span></div><main id="main">{hero}{experience}{publications}{patents}{awards}</main><footer><span>© 2026 Hu Luo · Updated {e(D['updated'])}</span>{link('mailto:'+D['email'],e(D['email'])+' ↗')}</footer></body></html>'''
+patents=f'<section class="cv-section" id="patents">{section_head("03",e(T["patents_label"]),e(T["patents"]))}<p class="section-intro">{e(T["patents_intro"])} <span class="collection-total">{len(D["patents"])} entries</span></p>{collection(D["patents"],patent,"patent","patents & applications")}</section>'
+awards=f'<section class="cv-section" id="awards">{section_head("04",e(T["awards_label"]),e(T["awards"]))}{collection(D["awards"],lambda x:f"<li>{e(x)}</li>","award","awards")}</section>'
+description=P['page_description']
+html=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1200"><title>{e(P["page_title"])}</title><meta name="description" content="{e(description)}"><meta name="theme-color" content="#193e38"><meta property="og:title" content="{e(P["page_title"],quote=True)}"><meta property="og:description" content="{e(description)}"><meta property="og:type" content="profile"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css"></head><body><a class="skip" href="#main">Skip to content</a><div class="page-top"><span>{e(D["name"].upper())}</span><span>{e(P["top_label"])}</span></div><main id="main">{hero}{experience}{publications}{patents}{awards}</main><footer><span>© 2026 {e(D["name"])} · Updated {e(D['updated'])}</span>{link('mailto:'+D['email'],e(D['email'])+' ↗')}</footer></body></html>'''
 (OUT/'index.html').write_text(html,encoding='utf-8')
 # Previously shared addresses redirect into the single page.
 for filename,anchor in [('experience.html','experience'),('publications.html','publications'),('patents.html','patents'),('cv.html','main')]:
     target='index.html#'+anchor
-    (OUT/filename).write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url={target}"><title>Hu Luo | Academic CV</title><link rel="canonical" href="{e(D["site_url"])}/"></head><body><p><a href="{target}">Continue to Hu Luo’s academic profile</a></p></body></html>',encoding='utf-8')
+    (OUT/filename).write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url={target}"><title>{e(P["page_title"])}</title><link rel="canonical" href="{e(D["site_url"])}/"></head><body><p><a href="{target}">Continue to Hu Luo’s academic profile</a></p></body></html>',encoding='utf-8')
 (OUT/'404.html').write_text('<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Page not found | Hu Luo</title></head><body><h1>Page not found</h1><p><a href="index.html">Return to Hu Luo’s academic profile</a></p></body></html>',encoding='utf-8')
 (OUT/'.nojekyll').touch()
 (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+D['site_url']+'/sitemap.xml\n',encoding='utf-8')

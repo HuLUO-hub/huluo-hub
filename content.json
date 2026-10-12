@@ -5,8 +5,43 @@
   "scholar": "https://scholar.google.com/citations?user=aoawPFcAAAAJ",
   "site_url": "https://huluo-hub.github.io",
   "updated": "October 2026",
-  "bio": "I am pursuing a Ph.D. in Biomedical Engineering at Fudan University. My research focuses on AI-based multidimensional force decoupling, vision-based tactile sensing, and their applications in gait analysis and robotic manipulation.",
-  "bio_secondary": "My work connects sensing hardware with learning-based force estimation. Alongside my doctoral research, I have worked on tactile sensing modules for robotic hands and founded Medical and Engineering Innovators, a non-profit community for knowledge exchange across medicine and engineering.",
+  "wechat": "18995477896",
+  "profile": {
+    "page_title": "Hu Luo | Academic Homepage",
+    "page_description": "Hu Luo, a Ph.D. student in Biomedical Engineering at Fudan University, working on vision-based tactile sensing, multidimensional force estimation and gait biomechanics.",
+    "top_label": "ACADEMIC PROFILE",
+    "research_tagline": "BIOMEDICAL ENGINEERING · TACTILE ROBOTICS",
+    "role": "Ph.D. Student in Biomedical Engineering",
+    "affiliation": "Fudan University",
+    "affiliation_zh": "复旦大学",
+    "portrait": "assets/portrait.jpg",
+    "portrait_alt": "Portrait of Hu Luo"
+  },
+  "intro_paragraphs": [
+    "I am a Ph.D. student in Biomedical Engineering at Fudan University, where I study vision-based tactile sensing and learning-based estimation of multidimensional contact forces. I received my bachelor’s degree in Biomedical Engineering from Xi’an Jiaotong University in 2021. My research connects biomechanics, soft sensing interfaces and machine learning, with a focus on measuring how humans and robots interact with their physical surroundings.",
+    "A central theme of my doctoral work is recovering pressure and shear information from visual observations of sensor deformation. My experience spans sensing-interface design, finite-element analysis, sensor fabrication, calibration-data acquisition, visual feature representation and deep-learning-based force decoupling. In my first-author journal work, I have developed a flexible plantar-force platform, investigated complementary sensing features for force estimation, and benchmarked learning methods against force-measurement requirements. These studies connect hardware development with model design and experimental evaluation.",
+    "I am particularly interested in spatially resolved force measurement for dynamic gait analysis and tactile perception for robotic hands. My ongoing work explores calibration efficiency, transfer learning and knowledge distillation for vision-based tactile sensors, alongside pressure and shear measurement during foot–ground interactions. Through collaborative projects, I have also contributed to research on tactile prostheses and visuo-tactile robotic manipulation. Across these topics, my aim is to make tactile information useful for understanding movement and supporting physical interaction.",
+    "Alongside my academic work, I served as Co-founder and Technical Director of the Haptics Division at NeoteAI, leading the development and commercialization of tactile sensing modules for two-fingered and five-fingered robotic hands. I also founded Medical and Engineering Innovators (医工学人), a nonprofit organization dedicated to sharing knowledge, research insights and technology developments across medicine and engineering. These experiences have shaped my interest in translating sensing research into practical systems and connecting researchers, clinicians and engineers."
+  ],
+  "section_titles": {
+    "education": "Education",
+    "education_zh": "教育经历",
+    "experience": "Experience",
+    "experience_zh": "工作与社会组织经历",
+    "background_more": "More about education & experience",
+    "background_less": "Hide details",
+    "publications": "Publications & manuscripts",
+    "publications_label": "ACADEMIC OUTPUT",
+    "publications_intro": "Selected first-author work, followed by ongoing research and collaborations.",
+    "patents": "Patents & applications",
+    "patents_label": "INVENTIONS",
+    "patents_intro": "From optical sensing hardware to force estimation and practical deployment.",
+    "awards": "Honors & awards",
+    "awards_label": "RECOGNITION"
+  },
+  "display": {
+    "initial_items": 10
+  },
   "education": [
     {
       "period": "2021 — Present",
@@ -33,9 +68,9 @@
   ],
   "experience": [
     {
-      "period": "2025 — Present",
+      "period": "2025 — 2026",
       "institution": "NeoteAI",
-      "role": "Co-founder & Technical Consultant, Haptics Division",
+      "role": "Co-founder & Technical Director, Haptics Division",
       "department": "Tactile sensing & embodied intelligence",
       "detail": "Led the end-to-end development and commercialization of tactile sensing modules for robotic hands, including two-fingered and five-fingered configurations.",
       "institution_zh": "上海新智具身智能科技有限公司",
@@ -45,7 +80,7 @@
       "intro": "NeoteAI develops tactile sensing hardware and embodied intelligence technologies for robotic manipulation."
     },
     {
-      "period": "2022 — Present",
+      "period": "2022 — 2026",
       "institution": "Medical and Engineering Innovators",
       "role": "Founder & President",
       "department": "Medical–engineering exchange & public-interest science communication",
@@ -53,25 +88,8 @@
       "institution_zh": "医工学人 · 平湖市医工学人科技推广院",
       "logo": "assets/logos/mei.png",
       "logo_kind": "word-logo",
-      "url": "https://yigongxueren.com",
+      "url": "https://yigongxueren.com/about-us/",
       "intro": "A nonprofit academic organization connecting students, clinicians, researchers and industry professionals across medicine and engineering."
-    }
-  ],
-  "research": [
-    {
-      "title": "Vision-based tactile sensing",
-      "tag": "SENSING",
-      "text": "Optical tactile sensors, fingertip sensing and learning-based estimation of multidimensional contact forces for robotic hands."
-    },
-    {
-      "title": "Learning to decouple forces",
-      "tag": "LEARNING",
-      "text": "Deep learning for pressure and shear force estimation, with research on sensing features, calibration efficiency and sim-to-real transfer."
-    },
-    {
-      "title": "Gait & human–robot interaction",
-      "tag": "APPLICATIONS",
-      "text": "Multidimensional plantar stress measurement, dynamic gait analysis, tactile prostheses and visuo-tactile robotic manipulation."
     }
   ],
   "publications": [
@@ -89,7 +107,9 @@
       "summary": "We designed a flexible optical force platform that links silicone deformation to plantar pressure and shear. Finite-element analysis informed the sensing interface, while optical-flow features and a U-Net model enabled multidimensional force estimation. This work brings together sensor mechanics, fabrication, calibration and learning-based interpretation of contact.",
       "expertise": "Sensor design · Calibration · Force estimation",
       "image": "assets/research/sensor.svg",
-      "image_alt": "Conceptual cutaway of a flexible optical sensor: contact deforms a particle-containing layer observed by a camera."
+      "image_alt": "Conceptual cutaway of a flexible optical sensor: contact deforms a particle-containing layer observed by a camera.",
+      "first_author": true,
+      "image_caption": "Research schematic"
     },
     {
       "id": 2,
@@ -105,7 +125,9 @@
       "summary": "We compared sensing features and their roles in separating pressure from shear: arrow-based features capture directional changes, while grayscale features support pressure estimation. A dual-branch VGG model combines these complementary inputs, connecting feature design with multidimensional force prediction.",
       "expertise": "Sensing representations · Multimodal model design",
       "image": "assets/research/features.svg",
-      "image_alt": "Conceptual two-branch diagram combining directional and grayscale image features for pressure and shear estimation."
+      "image_alt": "Conceptual two-branch diagram combining directional and grayscale image features for pressure and shear estimation.",
+      "first_author": true,
+      "image_caption": "Research schematic"
     },
     {
       "id": 3,
@@ -121,7 +143,9 @@
       "summary": "We benchmarked eight deep-learning models using force-specific criteria, including linearity, accuracy, contact area, force distribution and response time. Evaluation progressed from calibration data to anatomical foot phantoms and gait experiments, providing a practical basis for choosing models for multidimensional plantar-force measurement.",
       "expertise": "Benchmark design · Biomechanical validation",
       "image": "assets/research/benchmark.svg",
-      "image_alt": "Conceptual evaluation pipeline: eight models, force-specific measurement criteria, foot phantom and gait validation."
+      "image_alt": "Conceptual evaluation pipeline: eight models, force-specific measurement criteria, foot phantom and gait validation.",
+      "first_author": true,
+      "image_caption": "Research schematic"
     },
     {
       "id": 4,
@@ -133,7 +157,8 @@
       "doi": "10.1007/978-3-031-51485-2_23",
       "selected": false,
       "authors": "Luo H, Ma X, Chen W M",
-      "display_venue": "Asian-Pacific Conference on Medical and Biological Engineering · 200–208 · 2023"
+      "display_venue": "Asian-Pacific Conference on Medical and Biological Engineering · 200–208 · 2023",
+      "first_author": true
     },
     {
       "id": 5,
@@ -145,7 +170,8 @@
       "doi": "10.1109/ICHIH63459.2024.11064877",
       "selected": false,
       "authors": "Luo H, Xu Y, Ma X, et al",
-      "display_venue": "ICHIH · 228–232 · 2024"
+      "display_venue": "ICHIH · 228–232 · 2024",
+      "first_author": true
     },
     {
       "id": 6,
@@ -157,7 +183,8 @@
       "doi": "10.21037/qims-23-1807",
       "selected": false,
       "authors": "Teng Y, Luo H, Cai Y, et al",
-      "display_venue": "Quantitative Imaging in Medicine and Surgery · 14(7), 4913–4922 · 2024"
+      "display_venue": "Quantitative Imaging in Medicine and Surgery · 14(7), 4913–4922 · 2024",
+      "first_author": false
     },
     {
       "id": 7,
@@ -169,7 +196,8 @@
       "doi": "10.1016/j.bspc.2025.108625",
       "selected": false,
       "authors": "Li J W, Luo H, Ma X, et al",
-      "display_venue": "Biomedical Signal Processing and Control · 112, 108625 · 2026"
+      "display_venue": "Biomedical Signal Processing and Control · 112, 108625 · 2026",
+      "first_author": false
     },
     {
       "id": 8,
@@ -183,7 +211,8 @@
       "url": "https://arxiv.org/abs/2603.14401",
       "project_url": "https://sressers.github.io/OCRA/",
       "authors": "Wang, K., Fan, K., Fu, Y., Lin, S., Luo, H., Seita, D., ... & Xue, X",
-      "display_venue": "IEEE International Conference on Robotics and Automation (ICRA) · 2026"
+      "display_venue": "IEEE International Conference on Robotics and Automation (ICRA) · 2026",
+      "first_author": false
     },
     {
       "id": 9,
@@ -195,7 +224,8 @@
       "doi": "10.1109/TMRB.2026.3712803",
       "selected": false,
       "authors": "Ma, Y., Xu, Y., Huang, J., Luo, H., Nong, Q., Geng, X., Ma, X., Chen, W.-M",
-      "display_venue": "IEEE Transactions on Medical Robotics and Bionics · 2026"
+      "display_venue": "IEEE Transactions on Medical Robotics and Bionics · 2026",
+      "first_author": false
     },
     {
       "id": 10,
@@ -209,7 +239,8 @@
       "url": "https://arxiv.org/abs/2606.29941",
       "project_url": "https://shengqi77.github.io/Seeing-Touch-from-Motion/",
       "authors": "Xu, S., Zhong G., Liu Y., Wang F., Luo H., Zhou H., Zhang W., Ye Z., Wu Z., Jiang Y.-G",
-      "display_venue": "European Conference on Computer Vision (ECCV) · 2026"
+      "display_venue": "European Conference on Computer Vision (ECCV) · 2026",
+      "first_author": false
     },
     {
       "id": 11,
@@ -223,7 +254,8 @@
       "authors": "Luo, H., Wang Z, Wang F, et al",
       "display_venue": "IEEE Journal of Biomedical and Health Informatics",
       "summary": "This work investigates an AI-informed force-sensing unit for monitoring gait patterns and loading. It connects force estimation with a practical monitoring system, extending my research from sensing components to the interpretation of human movement.",
-      "key_manuscript": true
+      "key_manuscript": true,
+      "first_author": true
     },
     {
       "id": 12,
@@ -237,7 +269,8 @@
       "authors": "Luo, H., Ma Y, Wang Z, et al",
       "display_venue": "IEEE Transactions on Instrumentation and Measurement",
       "summary": "This work explores transfer learning and knowledge distillation for force calibration across mass-produced vision-based tactile sensors. The focus is on making learned force estimation easier to transfer and deploy when moving from an individual sensor to multiple manufactured units.",
-      "key_manuscript": true
+      "key_manuscript": true,
+      "first_author": true
     },
     {
       "id": 13,
@@ -249,7 +282,8 @@
       "doi": "",
       "selected": false,
       "authors": "Huang, Q., Luo H., Chen H., Wang F., Jiang Y.-G., Chen W",
-      "display_venue": "IEEE Sensors Journal"
+      "display_venue": "IEEE Sensors Journal",
+      "first_author": false
     },
     {
       "id": 14,
@@ -261,7 +295,8 @@
       "doi": "",
       "selected": false,
       "authors": "Chan, H., Luo H., Huang Q., Wang F., Ma Y., Jiang Y.-G., Chen W",
-      "display_venue": "IEEE Robotics and Automation Letters"
+      "display_venue": "IEEE Robotics and Automation Letters",
+      "first_author": false
     },
     {
       "id": 15,
@@ -273,7 +308,8 @@
       "doi": "",
       "selected": false,
       "authors": "Sun, Z., Wu C., Jia X., Li J., Luo H., Cao W., Xu Y., Zhu X., Dong S., Wen Y., Huang Q., Chen W.-M., Wu Z., Jiang Y.-G",
-      "display_venue": "ICLR 2027"
+      "display_venue": "ICLR 2027",
+      "first_author": false
     },
     {
       "id": 16,
@@ -287,7 +323,8 @@
       "authors": "Luo, H., Wang, F., Wang, Z., Huang, Q., Chen, H., Zeng, S., Zheng, Z., Li, J., Ma, X., Chen, W.-M",
       "display_venue": "Journal of Biomechanics",
       "summary": "This proof-of-concept study investigates simultaneous measurement of pressure and shear distributions during dynamic foot–ground interactions. The aim is to connect vision-based force sensing with spatially resolved loading information for gait biomechanics.",
-      "key_manuscript": true
+      "key_manuscript": true,
+      "first_author": true
     },
     {
       "id": 17,
@@ -299,7 +336,8 @@
       "doi": "",
       "selected": false,
       "authors": "Chen, H., Luo, H., Huang, Q., Wang, F., Ma, Y., Jiang, Y.-G., Chen, W.-M",
-      "display_venue": "ICRA 2027"
+      "display_venue": "ICRA 2027",
+      "first_author": false
     },
     {
       "id": 18,
@@ -311,7 +349,8 @@
       "doi": "",
       "selected": false,
       "authors": "Huang, Q., Luo, H., Chen, H., Chen, W.-M., Jiang, Y.-G",
-      "display_venue": "ICRA 2027"
+      "display_venue": "ICRA 2027",
+      "first_author": false
     }
   ],
   "patents": [
@@ -455,12 +494,6 @@
     "Outstanding Oral Presentation Award, Shanghai International Conference on Biomechanics in Human Movement and Clinical Translation, Shanghai, China, Jul. 2026.",
     "Second Prize, The 9th National Biomedical Engineering Innovation Design Competition for University Students, China, Jul. 2024.",
     "Bronze Medal, 2023 University Invention Selection Competition, Shanghai, China, Jun. 2023."
-  ],
-  "wechat": "18995477896",
-  "intro_paragraphs": [
-    "I am a Ph.D. student in Biomedical Engineering at Fudan University. My research asks how we can recover multidimensional contact forces from the deformation of soft, vision-based tactile sensors. I work across sensor design, calibration, sensing representations and deep learning, with applications in plantar pressure and shear measurement, dynamic gait analysis and robotic touch.",
-    "My work connects the physical design of a sensing interface with the models used to interpret it. I am particularly interested in making force estimation reliable and practical: choosing informative visual features, evaluating models against force-measurement requirements, and improving calibration and deployment for tactile sensing systems.",
-    "Beyond academic research, I served as Co-founder and Technical Consultant of the Haptics Division at NeoteAI, developing tactile sensing modules for robotic hands. I also founded Medical and Engineering Innovators, a nonprofit community that connects medicine and engineering through knowledge exchange and science communication."
   ],
   "publication_order": [
     2,
