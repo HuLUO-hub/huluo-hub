@@ -33,7 +33,7 @@
   ],
   "experience": [
     {
-      "period": "2025 — 2026",
+      "period": "2025 — Present",
       "institution": "NeoteAI",
       "role": "Co-founder & Technical Director, Haptics Division",
       "department": "Tactile sensing & embodied intelligence",
@@ -45,7 +45,7 @@
       "intro": "NeoteAI develops tactile sensing hardware and embodied intelligence technologies for robotic manipulation."
     },
     {
-      "period": "2022 — 2026",
+      "period": "2022 — Present",
       "institution": "Medical and Engineering Innovators",
       "role": "Founder & President",
       "department": "Medical–engineering exchange & public-interest science communication",
@@ -53,7 +53,7 @@
       "institution_zh": "医工学人 · 平湖市医工学人科技推广院",
       "logo": "assets/logos/mei.png",
       "logo_kind": "word-logo",
-      "url": "https://yigongxueren.com/about-us/",
+      "url": "https://yigongxueren.com",
       "intro": "A nonprofit academic organization connecting students, clinicians, researchers and industry professionals across medicine and engineering."
     }
   ],
@@ -458,9 +458,9 @@
   ],
   "wechat": "18995477896",
   "intro_paragraphs": [
-    "I am a Ph.D. researcher in Biomedical Engineering at Fudan University. My research asks how we can recover multidimensional contact forces from the deformation of soft, vision-based tactile sensors. I work across sensor design, calibration, sensing representations and deep learning, with applications in plantar pressure and shear measurement, dynamic gait analysis and robotic touch.",
+    "I am a Ph.D. student in Biomedical Engineering at Fudan University. My research asks how we can recover multidimensional contact forces from the deformation of soft, vision-based tactile sensors. I work across sensor design, calibration, sensing representations and deep learning, with applications in plantar pressure and shear measurement, dynamic gait analysis and robotic touch.",
     "My work connects the physical design of a sensing interface with the models used to interpret it. I am particularly interested in making force estimation reliable and practical: choosing informative visual features, evaluating models against force-measurement requirements, and improving calibration and deployment for tactile sensing systems.",
-    "Beyond academic research, I served as Co-founder and Technical Director of the Haptics Division at NeoteAI, developing tactile sensing modules for robotic hands. I also founded Medical and Engineering Innovators, a nonprofit community that connects medicine and engineering through knowledge exchange and science communication."
+    "Beyond academic research, I served as Co-founder and Technical Consultant of the Haptics Division at NeoteAI, developing tactile sensing modules for robotic hands. I also founded Medical and Engineering Innovators, a nonprofit community that connects medicine and engineering through knowledge exchange and science communication."
   ],
   "publication_order": [
     2,
