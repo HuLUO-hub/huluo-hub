@@ -12,6 +12,10 @@ LIMIT = D.get('display', {}).get('initial_items', 10)
 assert isinstance(LIMIT, int) and not isinstance(LIMIT, bool) and LIMIT > 0, 'initial_items must be a positive integer.'
 def link(url,label,cls=''):
     return f'<a class="{cls}" href="{e(url,quote=True)}">{label}</a>'
+
+def intro_text(text):
+    # Only paired **bold** markers are supported; user HTML remains literal text.
+    return re.sub(r'\*\*([^*\n]+)\*\*', r'<strong>\1</strong>', e(text))
 def section_head(number,label,title):
     return f'<div class="section-heading"><span class="section-number">{number}</span><div><p class="eyebrow">{label}</p><h2>{title}</h2></div></div>'
 def institution(x):
@@ -64,7 +68,7 @@ def collection(items, renderer, kind, label):
     count=T.get('additional_entries', '{count} additional entries').replace('{count}', str(remaining))
     return first+f'<details class="more-items" id="more-{kind}"><summary><span class="when-closed">{e(more)} <span aria-hidden="true">↗</span></span><span class="when-open">{e(less)} <span aria-hidden="true">−</span></span><span class="more-count">{e(count)}</span></summary><ol class="{kind}-list" start="{limit+1}">'+''.join(renderer(x) for x in items[limit:])+'</ol></details>'
 
-bio=''.join(f'<p class="hero-bio">{e(p)}</p>' for p in D['intro_paragraphs'])
+bio=''.join(f'<p class="hero-bio">{intro_text(p)}</p>' for p in D['intro_paragraphs'])
 wechat=f'<details class="wechat"><summary>WeChat <span aria-hidden="true">+</span></summary><div class="wechat-card"><span>WeChat ID</span><strong>{e(D["wechat"])}</strong></div></details>'
 hero=f'''<section class="hero"><div class="hero-copy"><p class="eyebrow"><span class="dot"></span> {e(P["research_tagline"])}</p><h1>{e(D['name'])}</h1><p class="affiliation">{e(P["role"])} · {e(P["affiliation"])} <span lang="zh-CN">{e(P["affiliation_zh"])}</span></p>{bio}<div class="contact-links">{link('mailto:'+D['email'],e(D['email'])+' ↗')}{link(D['scholar'],'Google Scholar ↗')}{link(D['github'],'GitHub ↗')}{wechat}</div></div><figure class="portrait"><div class="portrait-frame"><img src="{e(P["portrait"],quote=True)}" alt="{e(P["portrait_alt"],quote=True)}" width="300" height="375"></div></figure></section>'''
 experience=f'''<section class="background-section" id="experience" aria-label="Education and experience"><div class="background-card"><div class="background-columns"><div class="background-column"><h2>{e(T["education"])} <span lang="zh-CN">{e(T["education_zh"])}</span></h2>{''.join(institution_compact(x) for x in D['education'])}</div><div class="background-column"><h2>{e(T["experience"])} <span lang="zh-CN">{e(T["experience_zh"])}</span></h2>{''.join(institution_compact(x) for x in D['experience'])}</div></div><details class="background-more"><summary><span class="background-show">{e(T["background_more"])}</span><span class="background-hide">{e(T["background_less"])}</span><span class="background-plus" aria-hidden="true">+</span></summary><div class="background-columns"><div>{''.join(institution_details(x) for x in D['education'])}</div><div>{''.join(institution_details(x) for x in D['experience'])}</div></div></details></div></section>'''
