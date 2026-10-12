@@ -14,7 +14,7 @@
     "role": "Ph.D. Student in Biomedical Engineering",
     "affiliation": "Fudan University",
     "affiliation_zh": "复旦大学",
-    "portrait": "assets/phpto.png",
+    "portrait": "assets/portrait.jpg",
     "portrait_alt": "Portrait of Hu Luo"
   },
   "intro_paragraphs": [
@@ -30,17 +30,24 @@
     "experience_zh": "工作与社会组织经历",
     "background_more": "More about education & experience",
     "background_less": "Hide details",
-    "publications": "Publications",
+    "publications": "Publications & manuscripts",
     "publications_label": "ACADEMIC OUTPUT",
-    "publications_intro": "Selected works, followed by ongoing research and collaborations.",
-    "patents": "Patents",
+    "publications_intro": "Selected first-author work, followed by ongoing research and collaborations.",
+    "patents": "Patents & applications",
     "patents_label": "INVENTIONS",
     "patents_intro": "From optical sensing hardware to force estimation and practical deployment.",
-    "awards": "Awards",
-    "awards_label": "RECOGNITION"
+    "awards": "Honors & awards",
+    "awards_label": "RECOGNITION",
+    "publications_more": "More publications & manuscripts",
+    "patents_more": "More patents & applications",
+    "awards_more": "More awards",
+    "show_fewer": "Show fewer",
+    "additional_entries": "{count} additional entries"
   },
   "display": {
-    "initial_items": 10
+    "initial_items": 10,
+    "publications_initial_items": 5,
+    "patents_initial_items": 5
   },
   "education": [
     {
@@ -68,9 +75,9 @@
   ],
   "experience": [
     {
-      "period": "2025 — Present",
+      "period": "2025 — 2026",
       "institution": "NeoteAI",
-      "role": "Co-founder & Technical Consultant, Haptics Division",
+      "role": "Co-founder & Technical Director, Haptics Division",
       "department": "Tactile sensing & embodied intelligence",
       "detail": "Led the end-to-end development and commercialization of tactile sensing modules for robotic hands, including two-fingered and five-fingered configurations.",
       "institution_zh": "上海新智具身智能科技有限公司",
@@ -80,7 +87,7 @@
       "intro": "NeoteAI develops tactile sensing hardware and embodied intelligence technologies for robotic manipulation."
     },
     {
-      "period": "2022 — Present",
+      "period": "2022 — 2026",
       "institution": "Medical and Engineering Innovators",
       "role": "Founder & President",
       "department": "Medical–engineering exchange & public-interest science communication",
@@ -88,7 +95,7 @@
       "institution_zh": "医工学人 · 平湖市医工学人科技推广院",
       "logo": "assets/logos/mei.png",
       "logo_kind": "word-logo",
-      "url": "https://yigongxueren.com/",
+      "url": "https://yigongxueren.com/about-us/",
       "intro": "A nonprofit academic organization connecting students, clinicians, researchers and industry professionals across medicine and engineering."
     }
   ],

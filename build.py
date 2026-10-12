@@ -54,10 +54,15 @@ def publication(p):
     return f'<li class="publication {cls}" data-id="{p["id"]}" data-status="{e(p["status"])}">{side}<div class="paper-content"><p class="paper-venue">{e(p["display_venue"])} {role_line}</p><h3 class="paper-title">{title}</h3>{author_line}{summary}{expertise}<div class="paper-actions">{actions}</div></div></li>'
 
 def collection(items, renderer, kind, label):
-    first=f'<ol class="{kind}-list">'+''.join(renderer(x) for x in items[:LIMIT])+'</ol>'
-    if len(items)<=LIMIT: return first
-    remaining=len(items)-LIMIT
-    return first+f'<details class="more-items" id="more-{kind}"><summary><span class="when-closed">More {label} <span aria-hidden="true">↗</span></span><span class="when-open">Show fewer <span aria-hidden="true">−</span></span><span class="more-count">{remaining} additional entries</span></summary><ol class="{kind}-list" start="{LIMIT+1}">'+''.join(renderer(x) for x in items[LIMIT:])+'</ol></details>'
+    limit=D.get('display', {}).get(kind+'s_initial_items', LIMIT)
+    assert isinstance(limit, int) and not isinstance(limit, bool) and limit > 0, kind+'s_initial_items must be a positive integer.'
+    first=f'<ol class="{kind}-list">'+''.join(renderer(x) for x in items[:limit])+'</ol>'
+    if len(items)<=limit: return first
+    remaining=len(items)-limit
+    more=T.get(kind+'s_more', 'More '+label)
+    less=T.get('show_fewer', 'Show fewer')
+    count=T.get('additional_entries', '{count} additional entries').replace('{count}', str(remaining))
+    return first+f'<details class="more-items" id="more-{kind}"><summary><span class="when-closed">{e(more)} <span aria-hidden="true">↗</span></span><span class="when-open">{e(less)} <span aria-hidden="true">−</span></span><span class="more-count">{e(count)}</span></summary><ol class="{kind}-list" start="{limit+1}">'+''.join(renderer(x) for x in items[limit:])+'</ol></details>'
 
 bio=''.join(f'<p class="hero-bio">{e(p)}</p>' for p in D['intro_paragraphs'])
 wechat=f'<details class="wechat"><summary>WeChat <span aria-hidden="true">+</span></summary><div class="wechat-card"><span>WeChat ID</span><strong>{e(D["wechat"])}</strong></div></details>'
