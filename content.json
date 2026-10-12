@@ -33,10 +33,10 @@
     "publications": "Publications",
     "publications_label": "ACADEMIC OUTPUT",
     "publications_intro": "Selected works, followed by ongoing research and collaborations.",
-    "patents": "Patents & applications",
+    "patents": "Patents",
     "patents_label": "INVENTIONS",
     "patents_intro": "From optical sensing hardware to force estimation and practical deployment.",
-    "awards": "Honors & awards",
+    "awards": "Awards",
     "awards_label": "RECOGNITION"
   },
   "display": {
