@@ -113,7 +113,7 @@
       "display_venue": "IEEE Sensors Journal · 24(7), 11723–11733 · 2024",
       "summary": "We designed a flexible optical force platform that links silicone deformation to plantar pressure and shear. Finite-element analysis informed the sensing interface, while optical-flow features and a U-Net model enabled multidimensional force estimation. This work brings together sensor mechanics, fabrication, calibration and learning-based interpretation of contact.",
       "expertise": "Sensor design · Calibration · Force estimation",
-      "image": "assets/research/sensor.svg",
+      "image": "assets/research/Platform.jpg",
       "image_alt": "Conceptual cutaway of a flexible optical sensor: contact deforms a particle-containing layer observed by a camera.",
       "first_author": true,
       "image_caption": "Research schematic"
@@ -131,7 +131,7 @@
       "display_venue": "Pattern Recognition · 172, 112327 · 2026",
       "summary": "We compared sensing features and their roles in separating pressure from shear: arrow-based features capture directional changes, while grayscale features support pressure estimation. A dual-branch VGG model combines these complementary inputs, connecting feature design with multidimensional force prediction.",
       "expertise": "Sensing representations · Multimodal model design",
-      "image": "assets/research/features.svg",
+      "image": "assets/research/Features.png",
       "image_alt": "Conceptual two-branch diagram combining directional and grayscale image features for pressure and shear estimation.",
       "first_author": true,
       "image_caption": "Research schematic"
@@ -149,7 +149,7 @@
       "display_venue": "IEEE Transactions on Instrumentation and Measurement · 74, 1–16 · 2025",
       "summary": "We benchmarked eight deep-learning models using force-specific criteria, including linearity, accuracy, contact area, force distribution and response time. Evaluation progressed from calibration data to anatomical foot phantoms and gait experiments, providing a practical basis for choosing models for multidimensional plantar-force measurement.",
       "expertise": "Benchmark design · Biomechanical validation",
-      "image": "assets/research/benchmark.svg",
+      "image": "assets/research/Benchmark.png",
       "image_alt": "Conceptual evaluation pipeline: eight models, force-specific measurement criteria, foot phantom and gait validation.",
       "first_author": true,
       "image_caption": "Research schematic"
