@@ -115,7 +115,7 @@ def patent(p):
         role=f'<span class="inventor-role">{e(label)}</span>'
     summary=f'<p class="patent-summary">{e(p["summary"])}</p>' if p.get('summary') else ''
     inventors=e(p['inventors']).replace('Luo Hu','<strong class="author">Luo Hu</strong>')
-    return f'<li class="patent" data-number="{p["number"]}"><div class="patent-meta"><span class="badge">{e(p["status"])}</span>{role}</div><div class="patent-content"><h3>{e(p["title"])}</h3>{patent_partners(p)}<p>{inventors}</p>{summary}{number}</div></li>'
+    return f'<li class="patent" data-number="{p["number"]}"><div class="patent-meta"><span class="badge">{e(p["status"])}</span>{role}{patent_partners(p)}</div><div class="patent-content"><h3>{e(p["title"])}</h3><p>{inventors}</p>{summary}{number}</div></li>'
 patents=f'<section class="cv-section" id="patents">{section_head("03",e(T["patents_label"]),e(T["patents"]))}<p class="section-intro">{e(T["patents_intro"])} <span class="collection-total">{len(D["patents"])} entries</span></p>{collection(D["patents"],patent,"patent","patents & applications")}</section>'
 awards=f'<section class="cv-section" id="awards">{section_head("04",e(T["awards_label"]),e(T["awards"]))}{collection(D["awards"],lambda x:f"<li>{e(x)}</li>","award","awards")}</section>'
 description=P['page_description']
