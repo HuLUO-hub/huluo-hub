@@ -18,10 +18,9 @@
     "portrait_alt": "Portrait of Hu Luo"
   },
   "intro_paragraphs": [
-    "I am a Ph.D. student in Biomedical Engineering at Fudan University, where I study **vision-based tactile sensing** and learning-based estimation of multidimensional contact forces. I received my bachelor’s degree in Biomedical Engineering from Xi’an Jiaotong University in 2021. My research connects biomechanics, soft sensing interfaces and machine learning, with a focus on measuring how humans and robots interact with their physical surroundings.",
-    "A central theme of my doctoral work is recovering pressure and shear information from visual observations of sensor deformation. My experience spans sensing-interface design, finite-element analysis, sensor fabrication, calibration-data acquisition, visual feature representation and deep-learning-based force decoupling. In my first-author journal work, I have developed a flexible plantar-force platform, investigated complementary sensing features for force estimation, and benchmarked learning methods against force-measurement requirements. These studies connect hardware development with model design and experimental evaluation.",
-    "I am particularly interested in spatially resolved force measurement for dynamic gait analysis and tactile perception for robotic hands. My ongoing work explores calibration efficiency, transfer learning and knowledge distillation for vision-based tactile sensors, alongside pressure and shear measurement during foot–ground interactions. Through collaborative projects, I have also contributed to research on tactile prostheses and visuo-tactile robotic manipulation. Across these topics, my aim is to make tactile information useful for understanding movement and supporting physical interaction.",
-    "Alongside my academic work, I served as Co-founder and Technical Director of the Haptics Division at NeoteAI, leading the development and commercialization of tactile sensing modules for two-fingered and five-fingered robotic hands. I also founded Medical and Engineering Innovators (医工学人), a nonprofit organization dedicated to sharing knowledge, research insights and technology developments across medicine and engineering. These experiences have shaped my interest in translating sensing research into practical systems and connecting researchers, clinicians and engineers."
+    "I am a Ph.D. candidate in Biomedical Engineering at **Fudan University**, focusing on **vision-based tactile sensing and multidimensional force measurement** for gait analysis and robotics. I received my bachelor's degree from **Xi'an Jiaotong University** in 2021. Beyond academia, I founded **Medical and Engineering Innovators (医工学人)** in 2022, a nonprofit community promoting interdisciplinary knowledge sharing across medicine and engineering.",
+    "My doctoral research spans **vision-based tactile sensor development, deep-learning-based force decoupling, sensing-feature analysis, performance benchmarking, and scalable calibration through transfer learning and knowledge distillation**. I have further extended these advances to **wearable sensing systems and large-area force platforms** for dynamic gait analysis. Since 2024, I have collaborated with **ANTA Sports** on sports biomechanics and human movement assessment. Since 2025, I have helped establish **NeoteAI**, translating tactile sensing technologies into embodied robotics and leading the development and launch of multiple tactile sensing products for robotic hands.",
+    "My current research interests center on **tactile perception and embodied intelligence**, particularly integrating tactile sensing with learning-based robotic manipulation and control. I am especially interested in **healthcare robotics**, including robotic ultrasound, rehabilitation, and assistive manipulation, where tactile feedback can enable more intelligent, adaptive, and reliable physical interactions."
   ],
   "section_titles": {
     "education": "Education",
@@ -77,7 +76,7 @@
     {
       "period": "2025 — Present",
       "institution": "NeoteAI",
-      "role": "Co-founder & Technical Director, Haptics Division",
+      "role": "Co-founder & Technical Consultant, Haptics Division",
       "department": "Tactile sensing & embodied intelligence",
       "detail": "Led the end-to-end development and commercialization of tactile sensing modules for robotic hands, including two-fingered and five-fingered configurations.",
       "institution_zh": "上海新智具身智能科技有限公司",
