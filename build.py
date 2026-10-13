@@ -12,6 +12,10 @@ LIMIT = D.get('display', {}).get('initial_items', 10)
 assert isinstance(LIMIT, int) and not isinstance(LIMIT, bool) and LIMIT > 0, 'initial_items must be a positive integer.'
 def link(url,label,cls=''):
     return f'<a class="{cls}" href="{e(url,quote=True)}">{label}</a>'
+
+def intro_text(text):
+    # Only paired **bold** markers are supported; user HTML remains literal text.
+    return re.sub(r'\*\*([^*\n]+)\*\*', r'<strong>\1</strong>', e(text))
 def section_head(number,label,title):
     return f'<div class="section-heading"><span class="section-number">{number}</span><div><p class="eyebrow">{label}</p><h2>{title}</h2></div></div>'
 def institution(x):
@@ -64,7 +68,7 @@ def collection(items, renderer, kind, label):
     count=T.get('additional_entries', '{count} additional entries').replace('{count}', str(remaining))
     return first+f'<details class="more-items" id="more-{kind}"><summary><span class="when-closed">{e(more)} <span aria-hidden="true">↗</span></span><span class="when-open">{e(less)} <span aria-hidden="true">−</span></span><span class="more-count">{e(count)}</span></summary><ol class="{kind}-list" start="{limit+1}">'+''.join(renderer(x) for x in items[limit:])+'</ol></details>'
 
-bio=''.join(f'<p class="hero-bio">{e(p)}</p>' for p in D['intro_paragraphs'])
+bio=''.join(f'<p class="hero-bio">{intro_text(p)}</p>' for p in D['intro_paragraphs'])
 wechat=f'<details class="wechat"><summary>WeChat <span aria-hidden="true">+</span></summary><div class="wechat-card"><span>WeChat ID</span><strong>{e(D["wechat"])}</strong></div></details>'
 hero=f'''<section class="hero"><div class="hero-copy"><p class="eyebrow"><span class="dot"></span> {e(P["research_tagline"])}</p><h1>{e(D['name'])}</h1><p class="affiliation">{e(P["role"])} · {e(P["affiliation"])} <span lang="zh-CN">{e(P["affiliation_zh"])}</span></p>{bio}<div class="contact-links">{link('mailto:'+D['email'],e(D['email'])+' ↗')}{link(D['scholar'],'Google Scholar ↗')}{link(D['github'],'GitHub ↗')}{wechat}</div></div><figure class="portrait"><div class="portrait-frame"><img src="{e(P["portrait"],quote=True)}" alt="{e(P["portrait_alt"],quote=True)}" width="300" height="375"></div></figure></section>'''
 experience=f'''<section class="background-section" id="experience" aria-label="Education and experience"><div class="background-card"><div class="background-columns"><div class="background-column"><h2>{e(T["education"])} <span lang="zh-CN">{e(T["education_zh"])}</span></h2>{''.join(institution_compact(x) for x in D['education'])}</div><div class="background-column"><h2>{e(T["experience"])} <span lang="zh-CN">{e(T["experience_zh"])}</span></h2>{''.join(institution_compact(x) for x in D['experience'])}</div></div><details class="background-more"><summary><span class="background-show">{e(T["background_more"])}</span><span class="background-hide">{e(T["background_less"])}</span><span class="background-plus" aria-hidden="true">+</span></summary><div class="background-columns"><div>{''.join(institution_details(x) for x in D['education'])}</div><div>{''.join(institution_details(x) for x in D['experience'])}</div></div></details></div></section>'''
@@ -74,13 +78,44 @@ assert len(D['publication_order'])==len(by_id) and set(D['publication_order'])==
 ordered=[by_id[i] for i in D['publication_order']]
 publications=f'''<section class="cv-section" id="publications">{section_head('02',e(T['publications_label']),e(T['publications']))}<p class="section-intro">{e(T["publications_intro"])} <span class="collection-total">{len(ordered)} entries</span></p>{collection(ordered,publication,'publication','publications & manuscripts')}</section>'''
 
+def patent_partners(p):
+    catalog=D.get('patent_organizations', {})
+    labels=D.get('patent_labels', {})
+    cards=[]
+    for item in p.get('partnerships', []):
+        relationship=item['type']
+        assert relationship in ('commercialized','collaboration'), 'Patent partnership type must be commercialized or collaboration.'
+        org=catalog[item['organization']]
+        assert org.get('name'), 'Fill the patent organization name before linking it to a patent.'
+        logo=''
+        if org.get('logo'):
+            path=OUT/org['logo']
+            assert path.is_file(), 'Patent organization logo not found: '+org['logo']
+            visual=path.read_text(encoding='utf-8').replace('<svg ',f'<svg role="img" aria-label="{e(org["name"])} logo" ',1) if path.suffix.lower()=='.svg' else f'<img src="{e(org["logo"])}" alt="{e(org["name"])} logo" loading="lazy">'
+            logo=f'<span class="patent-org-logo">{visual}</span>'
+        name=f'<span class="patent-org-name">{e(org["name"])}'
+        if org.get('name_zh'): name+=f'<span lang="zh-CN">{e(org["name_zh"])}</span>'
+        name+='</span>'
+        identity=logo+name
+        identity=link(org['url'],identity,'patent-org') if org.get('url') else f'<span class="patent-org">{identity}</span>'
+        label=labels.get(relationship, 'Commercialized' if relationship=='commercialized' else 'Collaboration')
+        note=f'<span class="patent-partner-note">{e(item["note"])}</span>' if item.get('note') else ''
+        cards.append(f'<div class="patent-partner {relationship}"><span class="relationship-label">{e(label)}</span>{identity}{note}</div>')
+    return '<div class="patent-partners">'+''.join(cards)+'</div>' if cards else ''
+
 def patent(p):
     number=link('https://patents.google.com/patent/'+p['number']+'/en',e(p['number'])+' ↗','text-link') if p['number'].startswith('CN') else e('Application '+p['number'])
     rank=p.get('inventor_rank')
-    role=f'<span class="inventor-role">{"First" if rank==1 else "Second"} inventor</span>' if rank in (1,2) else ''
+    role=''
+    if rank is not None:
+        assert isinstance(rank,int) and not isinstance(rank,bool) and rank>0, 'inventor_rank must be a positive integer or null.'
+        suffix='th' if 10<=rank%100<=20 else {1:'st',2:'nd',3:'rd'}.get(rank%10,'th')
+        ordinal={1:'First',2:'Second',3:'Third'}.get(rank,str(rank)+suffix)
+        label=D.get('patent_labels', {}).get('inventor', '{ordinal} inventor').replace('{ordinal}',ordinal).replace('{rank}',str(rank))
+        role=f'<span class="inventor-role">{e(label)}</span>'
     summary=f'<p class="patent-summary">{e(p["summary"])}</p>' if p.get('summary') else ''
     inventors=e(p['inventors']).replace('Luo Hu','<strong class="author">Luo Hu</strong>')
-    return f'<li class="patent" data-number="{p["number"]}"><div><span class="badge">{e(p["status"])}</span>{role}</div><div><h3>{e(p["title"])}</h3><p>{inventors}</p>{summary}{number}</div></li>'
+    return f'<li class="patent" data-number="{p["number"]}"><div class="patent-meta"><span class="badge">{e(p["status"])}</span>{role}</div><div class="patent-content"><h3>{e(p["title"])}</h3>{patent_partners(p)}<p>{inventors}</p>{summary}{number}</div></li>'
 patents=f'<section class="cv-section" id="patents">{section_head("03",e(T["patents_label"]),e(T["patents"]))}<p class="section-intro">{e(T["patents_intro"])} <span class="collection-total">{len(D["patents"])} entries</span></p>{collection(D["patents"],patent,"patent","patents & applications")}</section>'
 awards=f'<section class="cv-section" id="awards">{section_head("04",e(T["awards_label"]),e(T["awards"]))}{collection(D["awards"],lambda x:f"<li>{e(x)}</li>","award","awards")}</section>'
 description=P['page_description']

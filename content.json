@@ -367,7 +367,8 @@
       "number": "CN115144117A",
       "status": "Published",
       "inventor_rank": 1,
-      "summary": "A flexible optical sensing interface combines a transparent silicone layer, embedded particles, illumination and an RGB camera. A neural network maps the observed deformation to force information, linking sensor construction with calibration for multidimensional tactile measurement."
+      "summary": "A flexible optical sensing interface combines a transparent silicone layer, embedded particles, illumination and an RGB camera. A neural network maps the observed deformation to force information, linking sensor construction with calibration for multidimensional tactile measurement.",
+      "partnerships": []
     },
     {
       "title": "Multidimensional Force Decoupling Method and System, Storage Medium, and Computer Program Product",
@@ -375,7 +376,14 @@
       "number": "CN121936256A",
       "status": "Published",
       "inventor_rank": 1,
-      "summary": "This invention concerns the decoupling of multidimensional forces through a computational method and system. It addresses the interpretation stage of tactile sensing: separating coupled force components so that contact can be represented in more than one direction."
+      "summary": "This invention concerns the decoupling of multidimensional forces through a computational method and system. It addresses the interpretation stage of tactile sensing: separating coupled force components so that contact can be represented in more than one direction.",
+      "partnerships": [
+        {
+          "type": "commercialized",
+          "organization": "neoteai",
+          "note": ""
+        }
+      ]
     },
     {
       "title": "Distributed Force Estimation Method and System, Storage Medium, and Computer Program Product",
@@ -383,7 +391,14 @@
       "number": "CN121936255A",
       "status": "Published",
       "inventor_rank": 1,
-      "summary": "This invention focuses on distributed force estimation. Its subject is the recovery of how force is spread over a contact region, complementing work on multidimensional force decoupling and spatially resolved tactile perception."
+      "summary": "This invention focuses on distributed force estimation. Its subject is the recovery of how force is spread over a contact region, complementing work on multidimensional force decoupling and spatially resolved tactile perception.",
+      "partnerships": [
+        {
+          "type": "commercialized",
+          "organization": "neoteai",
+          "note": ""
+        }
+      ]
     },
     {
       "title": "A Visuotactile Sensor, Robotic Hand, and Tactile Perception and Manufacturing Methods Thereof",
@@ -391,7 +406,14 @@
       "number": "CN121804725A",
       "status": "Published",
       "inventor_rank": 1,
-      "summary": "This invention brings together a visuotactile sensor, its manufacturing method and tactile perception for a robotic hand. It connects sensing hardware with the process of turning contact-induced visual information into robotic touch."
+      "summary": "This invention brings together a visuotactile sensor, its manufacturing method and tactile perception for a robotic hand. It connects sensing hardware with the process of turning contact-induced visual information into robotic touch.",
+      "partnerships": [
+        {
+          "type": "commercialized",
+          "organization": "neoteai",
+          "note": ""
+        }
+      ]
     },
     {
       "title": "Visuotactile Sensor, Robotic Hand, and Control Method Thereof",
@@ -399,7 +421,14 @@
       "number": "CN121608173A",
       "status": "Published",
       "inventor_rank": 1,
-      "summary": "This invention concerns a visuotactile sensor and its use in a robotic hand, together with a related control method. It extends the sensing component into an integrated hand system where tactile information can support control."
+      "summary": "This invention concerns a visuotactile sensor and its use in a robotic hand, together with a related control method. It extends the sensing component into an integrated hand system where tactile information can support control.",
+      "partnerships": [
+        {
+          "type": "commercialized",
+          "organization": "neoteai",
+          "note": ""
+        }
+      ]
     },
     {
       "title": "A Simulation Method and Apparatus for Visuotactile Sensors, Storage Medium, Program Product, and Computing Device",
@@ -407,7 +436,14 @@
       "number": "CN121936103A",
       "status": "Published",
       "inventor_rank": 1,
-      "summary": "This invention concerns simulation methods and computing tools for visuotactile sensors. It forms part of my work on connecting the physical behavior of tactile hardware with computational representations used in sensing development."
+      "summary": "This invention concerns simulation methods and computing tools for visuotactile sensors. It forms part of my work on connecting the physical behavior of tactile hardware with computational representations used in sensing development.",
+      "partnerships": [
+        {
+          "type": "commercialized",
+          "organization": "neoteai",
+          "note": ""
+        }
+      ]
     },
     {
       "title": "A Tactile Perception Method and Apparatus for Visuotactile Sensors, Storage Medium, Program Product, and Computing Device",
@@ -415,7 +451,14 @@
       "number": "CN121936102A",
       "status": "Published",
       "inventor_rank": 1,
-      "summary": "This invention focuses on the tactile-perception stage of a visuotactile sensing system. It concerns methods and computing components for interpreting visual observations of contact as tactile information."
+      "summary": "This invention focuses on the tactile-perception stage of a visuotactile sensing system. It concerns methods and computing components for interpreting visual observations of contact as tactile information.",
+      "partnerships": [
+        {
+          "type": "commercialized",
+          "organization": "neoteai",
+          "note": ""
+        }
+      ]
     },
     {
       "title": "A Data Acquisition Method, Apparatus, and System for Calibrating Visuotactile Sensors",
@@ -423,7 +466,14 @@
       "number": "CN121829872A",
       "status": "Published",
       "inventor_rank": 1,
-      "summary": "This invention concerns data acquisition for calibrating visuotactile sensors. It focuses on the supporting method, apparatus and system needed to collect calibration information for learned tactile sensing."
+      "summary": "This invention concerns data acquisition for calibrating visuotactile sensors. It focuses on the supporting method, apparatus and system needed to collect calibration information for learned tactile sensing.",
+      "partnerships": [
+        {
+          "type": "commercialized",
+          "organization": "neoteai",
+          "note": ""
+        }
+      ]
     },
     {
       "title": "A Method, System, Computing Device, and Storage Medium for Inverse Estimation of Dynamic Pressure Distribution",
@@ -431,7 +481,14 @@
       "number": "CN122263548B",
       "status": "Granted",
       "inventor_rank": 1,
-      "summary": "This invention addresses inverse estimation of dynamic pressure distributions. Its subject is reconstructing how pressure is distributed over time, connecting computational estimation with the measurement of changing contact loads."
+      "summary": "This invention addresses inverse estimation of dynamic pressure distributions. Its subject is reconstructing how pressure is distributed over time, connecting computational estimation with the measurement of changing contact loads.",
+      "partnerships": [
+        {
+          "type": "commercialized",
+          "organization": "chengjie",
+          "note": ""
+        }
+      ]
     },
     {
       "title": "A Model Deployment Method, Apparatus, Device, and Medium for Visuotactile Sensors",
@@ -439,7 +496,8 @@
       "number": "CN122152123A",
       "status": "Published",
       "inventor_rank": 2,
-      "summary": "This invention concerns the deployment of models for visuotactile sensors. It addresses the transition from a developed sensing model to its use in a working device, complementing my research on calibration and practical tactile inference."
+      "summary": "This invention concerns the deployment of models for visuotactile sensors. It addresses the transition from a developed sensing model to its use in a working device, complementing my research on calibration and practical tactile inference.",
+      "partnerships": []
     },
     {
       "title": "A Gait Analysis Method, Related Apparatus, and Computer Storage Medium",
@@ -447,49 +505,68 @@
       "number": "CN121287114A",
       "status": "Published",
       "inventor_rank": 2,
-      "summary": "This invention concerns a gait-analysis method and associated computing apparatus. It connects the interpretation of human movement with the sensing and analysis systems developed through my biomechanics research."
+      "summary": "This invention concerns a gait-analysis method and associated computing apparatus. It connects the interpretation of human movement with the sensing and analysis systems developed through my biomechanics research.",
+      "partnerships": []
     },
     {
       "title": "A Prosthetic Toe Component with Ground Environment Sensing Capability and Fabrication Method Thereof",
       "inventors": "Chen Wen-Ming, Xu Yang-Yang, Luo Hu, Wang Xu, Ma Xin",
       "number": "CN116211558B",
       "status": "Granted",
-      "inventor_rank": 3
+      "inventor_rank": 3,
+      "partnerships": []
     },
     {
       "title": "A Human Tripping Risk Identification Method Based on Minimum Foot-to-Ground Distance Detection",
       "inventors": "Chen Hao, Chen Wen-Ming, Ma Xin, Jiang Dong-Gang, Zhu Yun-Chao, Huang Ji, Qian Le-Wen, Luo Hu, Ning Xin-Yi, Zhang Xing-Yu, Yang Xiong-Gang",
       "number": "CN115205973B",
       "status": "Granted",
-      "inventor_rank": 8
+      "inventor_rank": 8,
+      "partnerships": []
     },
     {
       "title": "A Multi-Curvature Ankle Prosthesis",
       "inventors": "Teng Yuan-Jun, Ma Xin, Chen Wen-Ming, Luo Hu, Huang Qiu-Hui, Yu Jian, Zhu Yun-Chao",
       "number": "CN223653996U",
       "status": "Granted",
-      "inventor_rank": 4
+      "inventor_rank": 4,
+      "partnerships": []
     },
     {
       "title": "A Restrictive Ankle Prosthesis",
       "inventors": "Teng Yuan-Jun, Ma Xin, Chen Wen-Ming, Yu Jian, Zhu Yun-Chao, Luo Hu, Huang Ji",
       "number": "CN222444445U",
       "status": "Granted",
-      "inventor_rank": 6
+      "inventor_rank": 6,
+      "partnerships": []
     },
     {
       "title": "A Multidimensional Force Plate Assembly",
       "inventors": "Zeng Quan-Shou, Luo Hu, Chen Wen-Ming, Zheng Zhi-Yi, Deng Cheng, Wang Fan-Jie, Wang Ze-Sheng",
       "number": "2026213620462",
       "status": "Filed",
-      "inventor_rank": 2
+      "inventor_rank": 2,
+      "partnerships": [
+        {
+          "type": "collaboration",
+          "organization": "anta",
+          "note": ""
+        }
+      ]
     },
     {
       "title": "A Multidimensional Force Plate Assembly",
       "inventors": "Zeng Quan-Shou, Luo Hu, Chen Wen-Ming, Zheng Zhi-Yi, Deng Cheng, Wang Fan-Jie, Wang Ze-Sheng",
       "number": "2026213620477",
       "status": "Filed",
-      "inventor_rank": 2
+      "inventor_rank": 2,
+      "partnerships": [
+        {
+          "type": "collaboration",
+          "organization": "anta",
+          "note": ""
+        }
+      ]
     }
   ],
   "awards": [
@@ -521,5 +598,36 @@
     17,
     13,
     15
-  ]
+  ],
+  "patent_labels": {
+    "inventor": "{ordinal} inventor",
+    "commercialized": "Commercialized",
+    "collaboration": "Collaboration"
+  },
+  "patent_organizations": {
+    "neoteai": {
+      "name": "NeoteAI",
+      "name_zh": "上海新智具身智能科技有限公司",
+      "logo": "assets/logos/neoteai.svg",
+      "url": "https://neoteai.com/"
+    },
+    "anta": {
+      "name": "ANTA Group",
+      "name_zh": "安踏集团",
+      "logo": "assets/logos/anta.png",
+      "url": "https://ir.anta.com/sc/about.php"
+    },
+    "other_company": {
+      "name": "",
+      "name_zh": "",
+      "logo": "",
+      "url": ""
+    },
+    "chengjie": {
+      "name": "Shanghai Chengjie Health Technology Co., Ltd.",
+      "name_zh": "上海橙捷健康科技有限公司",
+      "logo": "assets/logos/chengjie-sensoped.jpg",
+      "url": ""
+    }
+  }
 }
