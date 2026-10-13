@@ -105,17 +105,9 @@ def patent_partners(p):
 
 def patent(p):
     number=link('https://patents.google.com/patent/'+p['number']+'/en',e(p['number'])+' ↗','text-link') if p['number'].startswith('CN') else e('Application '+p['number'])
-    rank=p.get('inventor_rank')
-    role=''
-    if rank is not None:
-        assert isinstance(rank,int) and not isinstance(rank,bool) and rank>0, 'inventor_rank must be a positive integer or null.'
-        suffix='th' if 10<=rank%100<=20 else {1:'st',2:'nd',3:'rd'}.get(rank%10,'th')
-        ordinal={1:'First',2:'Second',3:'Third'}.get(rank,str(rank)+suffix)
-        label=D.get('patent_labels', {}).get('inventor', '{ordinal} inventor').replace('{ordinal}',ordinal).replace('{rank}',str(rank))
-        role=f'<span class="inventor-role">{e(label)}</span>'
     summary=f'<p class="patent-summary">{e(p["summary"])}</p>' if p.get('summary') else ''
     inventors=e(p['inventors']).replace('Luo Hu','<strong class="author">Luo Hu</strong>')
-    return f'<li class="patent" data-number="{p["number"]}"><div class="patent-meta"><span class="badge">{e(p["status"])}</span>{role}{patent_partners(p)}</div><div class="patent-content"><h3>{e(p["title"])}</h3><p>{inventors}</p>{summary}{number}</div></li>'
+    return f'<li class="patent" data-number="{p["number"]}"><div class="patent-meta">{patent_partners(p)}</div><div class="patent-content"><h3>{e(p["title"])}</h3><p>{inventors}</p>{summary}<div class="patent-reference"><span class="badge">{e(p["status"])}</span><span class="patent-number">{number}</span></div></div></li>'
 patents=f'<section class="cv-section" id="patents">{section_head("03",e(T["patents_label"]),e(T["patents"]))}<p class="section-intro">{e(T["patents_intro"])} <span class="collection-total">{len(D["patents"])} entries</span></p>{collection(D["patents"],patent,"patent","patents & applications")}</section>'
 awards=f'<section class="cv-section" id="awards">{section_head("04",e(T["awards_label"]),e(T["awards"]))}{collection(D["awards"],lambda x:f"<li>{e(x)}</li>","award","awards")}</section>'
 description=P['page_description']
